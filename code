@@ -1,0 +1,101 @@
+echo "# GMOstores" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/nhb-uyen/GMOstores.git
+git push -u origin master
+            
+%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+#Simulation of the number of stores that sell GMO for a week.
+
+total_store = 500 
+#initial number of stores
+
+def simulation (total_store):    
+  a = int(raw_input("Number of stores that sell GMO products initially"    
+  number_of_week = int(raw_input("Number of week "))    
+  threshold = int(raw_input("Threshold for all stores "))    
+  number_of_store = [a]    
+  #raw_input converts the input into a string and return it.    
+  #int indicates that user will input an interger.    
+  #number of week, initial number of stores, and threshold are all determined by the user.
+  for i in range(number_of_week):        
+      count = 0         
+      for g in range (total_store):            
+          if number_of_store[i] > threshold:                
+              count = count + 1        
+      number_of_store.append(count)    
+  #This is a loop function that keeps on running as long as number of store i is larger than the threshold.    
+  #The threshold is uniform for all store and determined by the user.    
+  #Because the threshold is uniform, unless the initial number of stores to sell GMO products is 0,    
+  #all stores will always decide to sell GMO products after the first week.
+  
+  x = range(number_of_week + 1)    
+  plt.title ("Number of stores selling GMO products")    
+  plt.xlabel ("Week")    
+  plt.ylabel ("Number of stores")    
+  plt.plot (x, number_of_store, 'o')    
+  plt.show()
+  #This is the command for the plots
+   
+simulation_flag = True
+while simulation_flag:    
+    simulation(total_store)    
+    print "Do the simulation again?"    
+    decision = raw_input("Type y or n:")    
+    if decision == 'n':         
+        simulation_flag = False        
+        print "End."   
+     else:        
+        print "Doing simulation again."
+#simulation_flag is used to signal the function to keep running or stop.
+
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
+def threshold (total_score):    
+    threshold = np.random.randint(0,total_store + 1, total_store)    
+    return threshold
+#number of stores that sell GMO for a week
+
+total_store = 500 
+#initial number of stores
+def simulation (total_store):    
+    a = int(raw_input("Number of stores that sell GMO products initially"    
+    number_of_week = int(raw_input("Number of week "))    
+    random_threshold = threshold(total_store)
+    number_of_store = [a]    
+    for i in range(number_of_week):        
+        count = 0        
+        for g in range (total_store):            
+            if number_of_store[i] > random_threshold[g]:                
+                 count = count + 1        
+            number_of_store.append(count)    
+    x = range(number_of_week + 1)   
+    plt.title ("Number of stores selling GMO products")    
+    plt.xlabel("Week")    
+    plt.ylabel("Number of stores")    
+    plt.plot(x, number_of_store, 'o')   
+    plt.show()   
+    simulation_flag = True
+
+while simulation_flag:    
+    simulation(total_store)   
+    print "Do the simulation again?"    
+    decision = raw_input("Type y or n:")    
+    if decision == 'n':        
+        simulation_flag = False        
+        print "End."    
+    else:        
+        print "Doing procedure again."
+
+
+
+
+
+
+
